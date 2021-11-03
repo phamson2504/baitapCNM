@@ -139,10 +139,18 @@ app.get("/trangchu/:id",(req,res)=>{
   }
   
   var arraybanbe=[];
-  let sqlMenber = "select * from menber where iduser = "+req.params.id+"";
+  let sqlMenber = "select * from menber where iduser = "+req.params.id+" or idNhan = "+req.params.id+"";
   Member = syncSql.mysql(config,sqlMenber).data.rows;
+  var idBan;
+  
+  
   for(let i=0 ;i<  Member.length;i++){
-    let usersql1 = "select * from Users where id = "+ Member[i].idNhan+"";
+        if( Member[i].idNhan == req.params.id){
+          idBan = Member[i].iduser
+      }else{
+        idBan = Member[i].idNhan
+      }
+    let usersql1 = "select * from Users where id = "+  idBan+"";
     let userketban1 = syncSql.mysql(config,usersql1).data.rows;
     for(let i=0 ;i<userketban1.length;i++){
       arraybanbe.push(userketban1[i])
@@ -198,17 +206,6 @@ app.get("/luubanbe/:id/:idkb",(req,res)=>{
   }
  
   db.query(sqlMenber,param,(err,data)=>{
-      if(err){
-          console.log(err)}
-  })
-  let sql2 = 'INSERT INTO  menber  set ?';
-  let param2={
-    idTroChuyen:idTroChuyen,
-    iduser:req.params.idkb,
-    idNhan:req.params.id,
-  }
- 
-  db.query(sql2,param2,(err,data)=>{
       if(err){
           console.log(err)}
   })
