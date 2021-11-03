@@ -139,16 +139,15 @@ app.get("/trangchu/:id",(req,res)=>{
   }
   
   var arraybanbe=[];
-  let sqlban = "select * from banbe where iduser = "+req.params.id+"";
-  ban = syncSql.mysql(config,sqlban).data.rows;
-  for(let i=0 ;i<  ban.length;i++){
-    let usersql1 = "select * from Users where id = "+ ban[i].idban+"";
+  let sqlMenber = "select * from menber where iduser = "+req.params.id+"";
+  Member = syncSql.mysql(config,sqlMenber).data.rows;
+  for(let i=0 ;i<  Member.length;i++){
+    let usersql1 = "select * from Users where id = "+ Member[i].idNhan+"";
     let userketban1 = syncSql.mysql(config,usersql1).data.rows;
     for(let i=0 ;i<userketban1.length;i++){
       arraybanbe.push(userketban1[i])
     
     }
-    console.log(userketban1)
   }
 
 
@@ -160,8 +159,6 @@ app.post("/search",upload.fields([]),(req,res)=>{
   res.redirect(`trangchu/${req.body.id}`)
 })
 app.get("/them/:idGui/:idNhan",(req,res)=>{
-  let sqlcheck = "select * from Chapnhanadd";
-  var check = syncSql.mysql(config,sqlcheck).data.rows;
   
     let sql1 = 'INSERT INTO  Chapnhanadd  set ?';
     let param={
@@ -178,20 +175,37 @@ app.get("/them/:idGui/:idNhan",(req,res)=>{
 })
 
 app.get("/luubanbe/:id/:idkb",(req,res)=>{
-  let sql1 = 'INSERT INTO  banbe  set ?';
+  var tenTrCh = req.params.id+req.params.idkb
+  // let sqltrochuyen = 'INSERT INTO  TroChuyen  set ?';
+  // let paramTroChuyen={
+  //     tenTroChuyen:tenTrCh,
+  // }
+  // db.query(sqltrochuyen,paramTroChuyen,(err,data)=>{
+  //     if(err){
+  //         console.log(err)}
+  // })
+
+  let sqlTimTenTT = "select * from TroChuyen where tenTroChuyen = "+tenTrCh+"";
+  TimTenTT = syncSql.mysql(config,sqlTimTenTT).data.rows;
+  var idTroChuyen= TimTenTT[0].id;
+  console.log("id tro chuyen"+idTroChuyen);
+
+  let sqlMenber = 'INSERT INTO  menber  set ?';
   let param={
+      idTroChuyen:idTroChuyen,
       iduser:req.params.id,
-      idban:req.params.idkb,
+      idNhan:req.params.idkb,
   }
  
-  db.query(sql1,param,(err,data)=>{
+  db.query(sqlMenber,param,(err,data)=>{
       if(err){
           console.log(err)}
   })
-  let sql2 = 'INSERT INTO  banbe  set ?';
+  let sql2 = 'INSERT INTO  menber  set ?';
   let param2={
-      iduser:req.params.idkb,
-      idban:req.params.id,
+    idTroChuyen:idTroChuyen,
+    iduser:req.params.idkb,
+    idNhan:req.params.id,
   }
  
   db.query(sql2,param2,(err,data)=>{
