@@ -176,14 +176,14 @@ app.get("/them/:idGui/:idNhan",(req,res)=>{
 
 app.get("/luubanbe/:id/:idkb",(req,res)=>{
   var tenTrCh = req.params.id+req.params.idkb
-  // let sqltrochuyen = 'INSERT INTO  TroChuyen  set ?';
-  // let paramTroChuyen={
-  //     tenTroChuyen:tenTrCh,
-  // }
-  // db.query(sqltrochuyen,paramTroChuyen,(err,data)=>{
-  //     if(err){
-  //         console.log(err)}
-  // })
+  let sqltrochuyen = 'INSERT INTO  TroChuyen  set ?';
+  let paramTroChuyen={
+      tenTroChuyen:tenTrCh,
+  }
+  db.query(sqltrochuyen,paramTroChuyen,(err,data)=>{
+      if(err){
+          console.log(err)}
+  })
 
   let sqlTimTenTT = "select * from TroChuyen where tenTroChuyen = "+tenTrCh+"";
   TimTenTT = syncSql.mysql(config,sqlTimTenTT).data.rows;
