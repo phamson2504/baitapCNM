@@ -117,27 +117,6 @@ socket.on("getMess",data=>{
             </div>`
             document.querySelector('.content_chat_center').appendChild(div);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-        }else if(valTest==".mkv"||valTest==".mp4"){
-            const div = document.createElement('div');
-            div.classList.add('received_chats');
-            div.innerHTML=` <div class="received_chats_img">
-                <img src="${data.image}" alt="">
-            </div>
-            <div class="received_msg">
-                <div class="received_msg_inbox">
-                    <!-- chat -->
-                    <p>
-                    <video width="150" height="100" controls>
-                     <source src="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/${data.text}" type="video/ogg">
-                     </video>
-                     </p>
-                    <!-- time -->
-                    <span class="time">${data.time}</span>
-    
-                </div>
-            </div>`
-            document.querySelector('.content_chat_center').appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         else if(valdocx==".docx"){
             const div = document.createElement('div');

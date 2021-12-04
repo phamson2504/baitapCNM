@@ -29,8 +29,8 @@ const uploadImage = multer({
   limits:{fileSize:2000000},
 })
 const s3= new AWS.S3({
-  accessKeyId:'',
-  secretAccessKey:'',
+  accessKeyId:'AKIAV76VXQMSPPGIUNF2',
+  secretAccessKey:'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',
 })
 //tao server io
 const http = require('http');
@@ -199,15 +199,10 @@ var db= mysql.createConnection({
   });
    var config = {
     host: "localhost",
-  port: "3306",
-  user: "root",
-  password: "nhatban1",
-  database: "baitap"
-  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
-  // port: "3306",
-  // user: "admin",
-  // password: "Nhatban1",
-  // database: "baitap"
+    port: "3306",
+    user: "root",
+    password: "nhatban1",
+    database: "baitap"
    }
 
   global.db = db;
@@ -334,8 +329,6 @@ const loginrequire = (req,res,next) =>{
 }
 //dang nhap
 app.post("/dangnhap",upload.fields([]),(req,res)=>{
-  idRoom=null;
-  idRoomNC=null;
   var kt=null;
   let sql = "select * from Users"
   db.query(sql,(err,data)=>{
@@ -668,6 +661,7 @@ app.get("/getMessNC/:id/:idphong",(req,res)=>{
 })
 
 
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+
+server.listen(process.env.PORT||3000,()=>{
+  console.log("Listening on port "+3000);
 });
