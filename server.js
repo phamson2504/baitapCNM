@@ -29,8 +29,8 @@ const uploadImage = multer({
   limits:{fileSize:2000000},
 })
 const s3= new AWS.S3({
-  accessKeyId:'AKIAV76VXQMSPPGIUNF2',
-  secretAccessKey:'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',
+  accessKeyId:'',
+  secretAccessKey:'',
 })
 //tao server io
 const http = require('http');
@@ -186,11 +186,7 @@ var db= mysql.createConnection({
   user: "root",
   password: "nhatban1",
   database: "baitap"
-  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
-  // port: "3306",
-  // user: "admin",
-  // password: "Nhatban1",
-  // database: "baitap"
+
   });
 
   db.connect(function(err) {
