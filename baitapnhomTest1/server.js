@@ -29,8 +29,8 @@ const uploadImage = multer({
   limits:{fileSize:2000000},
 })
 const s3= new AWS.S3({
-  accessKeyId:'',
-  secretAccessKey:'',
+  accessKeyId:'AKIAV76VXQMSDLJVMIMR',
+  secretAccessKey:'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',
 })
 //tao server io
 const http = require('http');
@@ -181,11 +181,16 @@ app.set('view engine','ejs');
 app.set('views','./views');
 
 var db= mysql.createConnection({
-    host: "localhost",
+  host: "localhost",
   port: "3306",
   user: "root",
   password: "nhatban1",
   database: "baitap"
+  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  // port: "3306",
+  // user: "admin",
+  // password: "Nhatban1",
+  // database: "baitap"
   });
 
   db.connect(function(err) {
@@ -194,10 +199,15 @@ var db= mysql.createConnection({
   });
    var config = {
     host: "localhost",
-    port: "3306",
-    user: "root",
-    password: "nhatban1",
-    database: "baitap"
+  port: "3306",
+  user: "root",
+  password: "nhatban1",
+  database: "baitap"
+  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  // port: "3306",
+  // user: "admin",
+  // password: "Nhatban1",
+  // database: "baitap"
    }
 
   global.db = db;
@@ -292,8 +302,9 @@ app.get("/verify-email",(req,res) =>{
     if(err){
       console.log(err);
     }else{
-        db.query('UPDATE users SET  emailToken = ?,isVerify =? WHERE emailToken= ?',["",true,token],(err,rows)=>{
+        db.query('UPDATE  Users  SET  emailToken = ?,isVerify =? WHERE emailToken= ?',["1",true,token],(err,rows)=>{
           if(err){
+            console.log(err);
             res.redirect("/dangki");
           }else{
             res.redirect("/");
@@ -323,6 +334,8 @@ const loginrequire = (req,res,next) =>{
 }
 //dang nhap
 app.post("/dangnhap",upload.fields([]),(req,res)=>{
+  idRoom=null;
+  idRoomNC=null;
   var kt=null;
   let sql = "select * from Users"
   db.query(sql,(err,data)=>{
@@ -655,6 +668,6 @@ app.get("/getMessNC/:id/:idphong",(req,res)=>{
 })
 
 
-server.listen(3000,()=>{
+server.listen(prosess.env.PORT||3000,()=>{
     console.log("Listening on port "+3000);
 });

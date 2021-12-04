@@ -229,12 +229,24 @@
                                         <div class="received_msg">
                                             <div class="received_msg_inbox">
                                                 <!-- chat -->
-                                                <%let s = chatArr[i]. Texts; let ktText = s.substring(s.length-4,s.length)%>
+                                                <%let s = chatArr[i]. Texts; let ktText = s.substring(s.length-4,s.length);
+                                                    let dox = s.substring(s.length-5,s.length)%>
                                                 <%if(ktText==".png"||ktText==".jpg"){%>
                                                     <p><img src="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>" alt="" style="width: 150px; height: 100px;"></p>
+                                                <%}else if(dox ==".docx"){%>
+                                                    <p><a href="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>"><%=chatArr[i]. Texts%></a></p>
+                                                
+                                                <%}else if(ktText==".mkv"||ktText==".mp4"){%>
+                                                    <p>
+                                                        <video width="150" height="100" controls>
+      
+                                                         <source src="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>" type="video/ogg">
+                                                        
+                                                         </video>
+                                                    </p>
+                                                    
                                                 <%}else{%>
                                                     <p><%=chatArr[i]. Texts%></p>
-                                                
                                                 <%}%>
                                                 <!-- time -->
                                                 <span class="time"><%=chatArr[i]. times%></span>
@@ -251,12 +263,22 @@
                                         <div class="received_msg">
                                             <div class="received_msg_inbox">
                                                 <!-- chat -->
-                                                <%let s = chatArr[i]. Texts; let ktText = s.substring(s.length-4,s.length)%>
+                                                <%let s = chatArr[i]. Texts; let ktText = s.substring(s.length-4,s.length);
+                                                    let dox = s.substring(s.length-5,s.length)%>
                                                 <%if(ktText==".png"||ktText==".jpg"){%>
                                                     <p><img src="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>" alt="" style="width: 150px; height: 100px;"></p>
+                                                <%}else if(dox ==".docx"){%>
+                                                    <p><a href="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>"><%=chatArr[i]. Texts%></a></p>
+                                                    <%}else if(ktText==".mkv"||ktText==".mp4"){%>
+                                                        <p>
+                                                            <video width="150" height="100" controls>
+          
+                                                             <source src="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>" type="video/ogg">
+                                                            
+                                                             </video>
+                                                        </p>
                                                 <%}else{%>
                                                     <p><%=chatArr[i]. Texts%></p>
-                                                
                                                 <%}%>
                                                 <!-- time -->
                                                 <span class="time"><%=chatArr[i]. times%></span>
@@ -274,13 +296,23 @@
                         <div class="outgoing_chat_msg">
                          
                             <!-- chat -->
-                            <%let s = chatArr[i]. Texts; let ktText = s.substring(s.length-4,s.length)%>
+                            <%let s = chatArr[i]. Texts; let ktText = s.substring(s.length-4,s.length);
+                            let dox = s.substring(s.length-5,s.length)%>
                             <%if(ktText==".png"||ktText==".jpg"){%>
                                 <p><img src="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>" alt="" style="width: 150px; height: 100px;"></p>
-                            <%}else{%>
-                                <p><%=chatArr[i]. Texts%></p>
-                               
-                            <%}%>
+                                <%}else if(dox ==".docx"){%>
+                                    <p><a href="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>"><%=chatArr[i]. Texts%></a></p>
+                                    <%}else if(ktText==".mkv"||ktText==".mp4"){%>
+                                        <p>
+                                            <video width="150" height="100" controls>
+
+                                             <source src="https://s3.ap-southeast-1.amazonaws.com/baitap.gg/<%= chatArr[i]. Texts%>" type="video/ogg">
+                                            
+                                             </video>
+                                        </p>
+                                <%}else{%>
+                                    <p><%=chatArr[i]. Texts%></p>
+                                <%}%>
                             <!-- time -->
                             <span class="time"><%=chatArr[i]. times%></span>
 
@@ -457,11 +489,11 @@
                 <div class="modal-body">
                     <p>Bạn có lời mời kết bạn</p>
                     <%for(let i = 0 ; i < kbUser.length ; i++) {%>
-                        
-                        <img width="50px" src=<%=kbUser[i].anh%>>
-                        <span><%=kbUser[i].ten%> </span>
-                        <a style="float: right;" class="btn btn-primary" href="/luubanbe/<%=id%>/<%=kbUser[i].id%>">them</a>
-                  
+                        <div>
+                            <img width="50px" src=<%=kbUser[i].anh%>>
+                            <span><%=kbUser[i].ten%> </span>
+                            <a style="float: right;" class="btn btn-primary" href="/luubanbe/<%=id%>/<%=kbUser[i].id%>">Thêm</a>
+                        </div>
                     <%}%>
                    
                 </div>
