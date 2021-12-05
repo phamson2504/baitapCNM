@@ -513,7 +513,7 @@ app.post("/trangchu/:id",uploadImage.single('profile'),(req,res) =>{
   let ngaysinh = req.body.ngaysinh;
   let gioitinh = req.body.gioitinh;
   if(anh == undefined){
-    db.query('UPDATE users SET  ten =?,ngaysinh=?,gioitinh = ? WHERE id= ?',
+    db.query('UPDATE Users SET  ten =?,ngaysinh=?,gioitinh = ? WHERE id= ?',
   [ten,ngaysinh,gioitinh,req.params.id],(err,rows) =>{
     if(!err){
       res.redirect(`/trangchu/${req.params.id}`);
@@ -525,7 +525,7 @@ app.post("/trangchu/:id",uploadImage.single('profile'),(req,res) =>{
   }
   else{
     hinhanh = "/images/"+anh;
-    db.query('UPDATE users SET  anh = ?,ten =?,ngaysinh=?,gioitinh = ? WHERE id= ?',
+    db.query('UPDATE Users SET  anh = ?,ten =?,ngaysinh=?,gioitinh = ? WHERE id= ?',
     [hinhanh,ten,ngaysinh,gioitinh,req.params.id],(err,rows) =>{
       if(!err){
         res.redirect(`/trangchu/${req.params.id}`);
@@ -579,7 +579,7 @@ app.post('/addNhomChat',uploadImage.single('fileNhom'),(req, res) => {
           idTroChuyen:idTT[0].id,
           iduser:req.body.id,
         }
-        db.query(sqlmemberNhomMe,sparammemberNhomMe,(err,data)=>{
+        db.query(sqlmemberNhomMe,parammemberNhomMe,(err,data)=>{
           if(err){
               console.log(err)}
       })
