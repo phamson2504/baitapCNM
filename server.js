@@ -186,7 +186,11 @@ var db= mysql.createConnection({
   user: "root",
   password: "nhatban1",
   database: "baitap"
-
+  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  // port: "3306",
+  // user: "admin",
+  // password: "Nhatban1",
+  // database: "baitap"
   });
 
   db.connect(function(err) {
@@ -195,10 +199,15 @@ var db= mysql.createConnection({
   });
    var config = {
     host: "localhost",
-    port: "3306",
-    user: "root",
-    password: "nhatban1",
-    database: "baitap"
+  port: "3306",
+  user: "root",
+  password: "nhatban1",
+  database: "baitap"
+  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  // port: "3306",
+  // user: "admin",
+  // password: "Nhatban1",
+  // database: "baitap"
    }
 
   global.db = db;
@@ -325,6 +334,8 @@ const loginrequire = (req,res,next) =>{
 }
 //dang nhap
 app.post("/dangnhap",upload.fields([]),(req,res)=>{
+  idRoom=null;
+  idRoomNC=null;
   var kt=null;
   let sql = "select * from Users"
   db.query(sql,(err,data)=>{
@@ -655,7 +666,6 @@ app.get("/getMessNC/:id/:idphong",(req,res)=>{
   idRoomNC=req.params.idphong;
   res.redirect(`/trangchu/${req.params.id}`)
 })
-
 
 
 app.listen(process.env.PORT || 3000, function(){
