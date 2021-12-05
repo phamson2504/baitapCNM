@@ -174,9 +174,9 @@ io.on('connection', (socket) => {
 });
  //midder
  app.use(express.json({extended: false}));
- app.use(express.static('./templates'));
+ app.use(express.static('./views'));
  app.set('view engine','ejs');
- app.set('views','./templates');
+ app.set('views','./views');
 
 var db= mysql.createConnection({
   // host: "localhost",
