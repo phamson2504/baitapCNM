@@ -173,11 +173,10 @@ io.on('connection', (socket) => {
   })
 });
  //midder
-app.use(cookieParser());
-app.use(express.json({extended: false}));
-app.use(express.static('./views'));
-app.set('view engine','ejs');
-app.set('views','./views');
+ app.use(express.json({extended: false}));
+ app.use(express.static('./templates'));
+ app.set('view engine','ejs');
+ app.set('views','./templates');
 
 var db= mysql.createConnection({
   host: "localhost",
