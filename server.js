@@ -675,6 +675,6 @@ app.get("/getMessNC/:id/:idphong",(req,res)=>{
   res.redirect(`/trangchu/${req.params.id}`)
 });
 
-app.listen(process.env.PORT||3000,()=>{
+server.listen(process.env.PORT||3000,()=>{
   console.log("Listening on port" + 3000);
 });
