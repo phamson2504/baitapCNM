@@ -1,17 +1,17 @@
 {
-  "name": "baitapnhom",
+  "name": "ThiGk_2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1031.0",
+    "aws-sdk": "^2.1008.0",
     "cookie-parser": "^1.4.5",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
