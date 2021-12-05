@@ -275,7 +275,7 @@ app.post('/dangki',upload.fields([]),(req,res)=>{
                           subject: 'appchat -xac minh email',
                           html:`<h2>${param.ten}! Cam on da dang ky tai khoan </h2>
                           <h4>Nhan duong link phia duoi de xac minh tai khoan..</h4>
-                          <a href="http://https://congnghemoi1.herokuapp.com/verify-email?token=${param.emailToken}">Xac minh tai khoan</a>`
+                          <a href="http://https://process.env.PORT/verify-email?token=${param.emailToken}">Xac minh tai khoan</a>`
                         }
                         tranporter.sendMail(mailOptions,function(err,info){
                           if(err){
