@@ -179,16 +179,16 @@ io.on('connection', (socket) => {
  app.set('views','./templates');
 
 var db= mysql.createConnection({
-  host: "localhost",
-  port: "3306",
-  user: "root",
-  password: "nhatban1",
-  database: "baitap"
-  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  // host: "localhost",
   // port: "3306",
-  // user: "admin",
-  // password: "Nhatban1",
+  // user: "root",
+  // password: "nhatban1",
   // database: "baitap"
+  host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  port: "3306",
+  user: "admin",
+  password: "Nhatban1",
+  database: "baitap"
   });
 
   db.connect(function(err) {
@@ -196,16 +196,16 @@ var db= mysql.createConnection({
     console.log("Connected!");
   });
    var config = {
-    host: "localhost",
-  port: "3306",
-  user: "root",
-  password: "nhatban1",
-  database: "baitap"
-  // host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  //   host: "localhost",
   // port: "3306",
-  // user: "admin",
-  // password: "Nhatban1",
+  // user: "root",
+  // password: "nhatban1",
   // database: "baitap"
+  host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
+  port: "3306",
+  user: "admin",
+  password: "Nhatban1",
+  database: "baitap"
    }
 
   global.db = db;
