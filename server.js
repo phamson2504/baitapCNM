@@ -1,3 +1,4 @@
+const { render } = require('ejs');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -173,10 +174,11 @@ io.on('connection', (socket) => {
   })
 });
  //midder
- app.use(express.json({extended: false}));
- app.use(express.static('./views'));
- app.set('view engine','ejs');
- app.set('views','./views');
+app.use(cookieParser());
+app.use(express.json({extended: true}));
+app.use(express.static('./views'));
+app.set('view engine','ejs');
+app.set('views','./views');
 
 var db= mysql.createConnection({
   // host: "localhost",
@@ -673,8 +675,9 @@ app.get("/getMessNC/:id/:idphong",(req,res)=>{
   idRoom=null;
   idRoomNC=req.params.idphong;
   res.redirect(`/trangchu/${req.params.id}`)
-});
+})
 
-server.listen(process.env.PORT||3000,()=>{
-  console.log("Listening on port" + 3000);
+
+server.listen(process.env.PORT || 3000,()=>{
+    console.log("Listening on port "+3000);
 });

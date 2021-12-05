@@ -1,5 +1,5 @@
 {
-  "name": "ThiGk_2",
+  "name": "baitapnhom",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,11 +7,14 @@
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1008.0",
+    "aws-sdk": "^2.1031.0",
     "cookie-parser": "^1.4.5",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
@@ -27,5 +30,9 @@
     "socket.io": "^4.3.1",
     "sync-sql": "^1.0.2",
     "uuid": "^8.3.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
+  
 }
