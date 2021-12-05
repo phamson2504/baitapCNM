@@ -174,7 +174,7 @@ io.on('connection', (socket) => {
 });
  //midder
 app.use(cookieParser());
-app.use(express.json({extended: true}));
+app.use(express.json({extended: false}));
 app.use(express.static('./views'));
 app.set('view engine','ejs');
 app.set('views','./views');
