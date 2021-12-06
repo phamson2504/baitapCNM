@@ -202,7 +202,7 @@ var db= mysql.createConnection({
   host: "baitapnhomcnm.crkxbwz5flrz.ap-southeast-1.rds.amazonaws.com",
   port: "3306",
   user: "admin",
-  password: "",
+  password: "Nhatban1",
   database: "baitap"
    }
 
